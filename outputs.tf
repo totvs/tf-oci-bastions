@@ -1,14 +1,14 @@
-output "bastion_id" {
-  description = "OCID do Bastion criado."
-  value       = oci_bastion_bastion.this.id
+output "bastion_ids" {
+  description = "Mapa com os OCIDs dos Bastions criados."
+  value       = { for k, v in oci_bastion_bastion.this : k => v.id }
 }
 
-output "bastion_name" {
-  description = "Nome do Bastion criado."
-  value       = oci_bastion_bastion.this.name
+output "bastion_names" {
+  description = "Mapa com os nomes dos Bastions criados."
+  value       = { for k, v in oci_bastion_bastion.this : k => v.name }
 }
 
-output "target_subnet_id" {
-  description = "OCID da subnet alvo associada ao Bastion."
-  value       = oci_bastion_bastion.this.target_subnet_id
+output "target_subnet_ids" {
+  description = "Mapa com os OCIDs das subnets alvo associadas aos Bastions."
+  value       = { for k, v in oci_bastion_bastion.this : k => v.target_subnet_id }
 }
